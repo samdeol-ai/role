@@ -1,673 +1,748 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Relevance Imperative — A Point of View on IT Services in the AI Era</title>
-<link rel="stylesheet" href="styles.css">
-<style>
-  /* Article-specific layout, layered on top of the shared dark theme */
-  .article-page {
-    background: var(--bg);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Relevance Imperative: A Point of View on IT Services in the AI Era</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Article-specific layout, layered on top of the shared dark theme */
+    .article-page {
+      background: var(--bg);
+    }
 
-  .article-masthead {
-    border-bottom: 1px solid var(--border);
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
+    .article-masthead {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
 
-  .article-masthead .brand-mark {
-    color: var(--text);
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    text-transform: none;
-    font-size: 16px;
-  }
+    .article-masthead .brand-mark {
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      text-transform: none;
+      font-size: 16px;
+    }
 
-  .article-masthead .vol {
-    font-size: 11px;
-  }
+    .article-masthead .vol {
+      font-size: 11px;
+    }
 
-  /* Hero */
-  .article-hero {
-    padding: 80px 0 100px;
-    border-bottom: 1px solid var(--border);
-    background:
-      radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 60%),
-      linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-    position: relative;
-  }
+    /* Hero */
+    .article-hero {
+      padding: 80px 0 100px;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 80% 0%, var(--accent-glow) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+      position: relative;
+    }
 
-  .article-hero .back-link {
-    margin-bottom: 40px;
-  }
+    .article-hero .back-link {
+      margin-bottom: 40px;
+    }
 
-  .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    margin-bottom: 28px;
-    font-weight: 600;
-  }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
 
-  .eyebrow::before {
-    content: "";
-    width: 36px;
-    height: 1px;
-    background: var(--accent-light);
-  }
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--accent-light);
+    }
 
-  .article-hero h1 {
-    font-size: clamp(44px, 7vw, 84px);
-    font-weight: 800;
-    line-height: 1.02;
-    letter-spacing: -2px;
-    margin-bottom: 32px;
-    background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    .article-hero h1 {
+      font-size: clamp(44px, 7vw, 84px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+      background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  .article-hero h1 em {
-    font-style: italic;
-    font-weight: 400;
-    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+    .article-hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  .article-deck {
-    font-size: clamp(18px, 2vw, 22px);
-    line-height: 1.55;
-    color: var(--text-muted);
-    max-width: 760px;
-    font-style: italic;
-  }
+    .article-deck {
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+      color: var(--text-muted);
+      max-width: 760px;
+      font-style: italic;
+    }
 
-  .hero-meta {
-    margin-top: 48px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 48px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
+    .hero-meta {
+      margin-top: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
 
-  .hero-meta strong {
-    display: block;
-    color: var(--text);
-    margin-top: 6px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
+    .hero-meta strong {
+      display: block;
+      color: var(--text);
+      margin-top: 6px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
 
-  /* Sections */
-  .article-section {
-    padding: 88px 0;
-    border-bottom: 1px solid var(--border);
-  }
+    /* Sections */
+    .article-section {
+      padding: 88px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
-  .article-section.alt {
-    background: var(--bg-alt);
-  }
+    .article-section.alt {
+      background: var(--bg-alt);
+    }
 
-  .article-section.dark {
-    background: linear-gradient(135deg, #0b0f1a 0%, #1a2236 60%, #2a1d4d 100%);
-    position: relative;
-    overflow: hidden;
-  }
+    .article-section.dark {
+      background: linear-gradient(135deg, #0b0f1a 0%, #1a2236 60%, #2a1d4d 100%);
+      position: relative;
+      overflow: hidden;
+    }
 
-  .article-section.dark::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-    pointer-events: none;
-  }
+    .article-section.dark::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-  .article-section .container {
-    max-width: 1100px;
-    position: relative;
-  }
+    .article-section .container {
+      max-width: 1100px;
+      position: relative;
+    }
 
-  .section-num {
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    color: var(--accent-light);
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
+    .section-num {
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      color: var(--accent-light);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
 
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 28px;
-    font-weight: 600;
-  }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
 
-  .article-section h2 {
-    font-size: clamp(32px, 4.5vw, 52px);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -1.2px;
-    margin-bottom: 28px;
-    color: var(--text);
-  }
+    .article-section h2 {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.2px;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
 
-  .article-section h2 em {
-    font-style: italic;
-    font-weight: 500;
-    color: var(--accent-light);
-  }
+    .article-section h2 em {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--accent-light);
+    }
 
-  .article-section p {
-    color: var(--text-muted);
-    font-size: 17px;
-    line-height: 1.75;
-    margin-bottom: 20px;
-    max-width: 72ch;
-  }
+    .article-section p {
+      color: var(--text-muted);
+      font-size: 17px;
+      line-height: 1.75;
+      margin-bottom: 20px;
+      max-width: 72ch;
+    }
 
-  .article-section p.lead {
-    font-size: 21px;
-    line-height: 1.55;
-    color: var(--text);
-    max-width: 64ch;
-    margin-bottom: 28px;
-    font-weight: 400;
-  }
+    .article-section p.lead {
+      font-size: 21px;
+      line-height: 1.55;
+      color: var(--text);
+      max-width: 64ch;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
 
-  .with-dropcap::first-letter {
-    font-size: 72px;
-    line-height: 0.9;
-    float: left;
-    padding: 6px 14px 0 0;
-    color: var(--accent-light);
-    font-weight: 800;
-  }
+    .with-dropcap::first-letter {
+      font-size: 72px;
+      line-height: 0.9;
+      float: left;
+      padding: 6px 14px 0 0;
+      color: var(--accent-light);
+      font-weight: 800;
+    }
 
-  /* Two column premise layout */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 64px;
-    align-items: start;
-  }
+    /* Two column premise layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+      align-items: start;
+    }
 
-  .two-col aside {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    line-height: 2;
-    border-left: 2px solid var(--accent);
-    padding-left: 20px;
-    position: sticky;
-    top: 32px;
-  }
+    .two-col aside {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 2;
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+      position: sticky;
+      top: 32px;
+    }
 
-  /* Pull quote */
-  .pullquote {
-    margin: 56px 0 24px;
-    padding: 36px 40px;
-    border-left: 3px solid var(--accent);
-    background: var(--surface);
-    border-radius: 0 12px 12px 0;
-    position: relative;
-  }
+    /* Pull quote */
+    .pullquote {
+      margin: 56px 0 24px;
+      padding: 36px 40px;
+      border-left: 3px solid var(--accent);
+      background: var(--surface);
+      border-radius: 0 12px 12px 0;
+      position: relative;
+    }
 
-  .pullquote q {
-    display: block;
-    font-size: clamp(20px, 2.2vw, 26px);
-    line-height: 1.5;
-    color: var(--text);
-    font-style: italic;
-    font-weight: 400;
-    quotes: none;
-    letter-spacing: -0.2px;
-  }
+    .pullquote q {
+      display: block;
+      font-size: clamp(20px, 2.2vw, 26px);
+      line-height: 1.5;
+      color: var(--text);
+      font-style: italic;
+      font-weight: 400;
+      quotes: none;
+      letter-spacing: -0.2px;
+    }
 
-  .pullquote q::before, .pullquote q::after { content: ""; }
+    .pullquote q::before,
+    .pullquote q::after {
+      content: "";
+    }
 
-  .pullquote cite {
-    display: block;
-    margin-top: 20px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    font-style: normal;
-    font-weight: 600;
-  }
+    .pullquote cite {
+      display: block;
+      margin-top: 20px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      font-style: normal;
+      font-weight: 600;
+    }
 
-  /* Matrix table */
-  .matrix-wrapper {
-    margin: 48px 0 28px;
-    overflow-x: auto;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-  }
+    /* Matrix table */
+    .matrix-wrapper {
+      margin: 48px 0 28px;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
 
-  .matrix {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    min-width: 720px;
-  }
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      min-width: 720px;
+    }
 
-  .matrix th, .matrix td {
-    padding: 22px 20px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-  }
+    .matrix th,
+    .matrix td {
+      padding: 22px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
 
-  .matrix thead th {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    font-weight: 700;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 18px;
-  }
+    .matrix thead th {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      font-weight: 700;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 18px;
+    }
 
-  .matrix thead th .col-sub {
-    display: block;
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    text-transform: none;
-    margin-top: 4px;
-  }
+    .matrix thead th .col-sub {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      text-transform: none;
+      margin-top: 4px;
+    }
 
-  .matrix tbody th {
-    font-weight: 700;
-    font-size: 17px;
-    color: var(--text);
-    width: 200px;
-  }
+    .matrix tbody th {
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+      width: 200px;
+    }
 
-  .matrix tbody th .level {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-  }
+    .matrix tbody th .level {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
 
-  .matrix tbody td {
-    color: var(--text-muted);
-    font-size: 15px;
-  }
+    .matrix tbody td {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
 
-  .matrix tbody tr:last-child th,
-  .matrix tbody tr:last-child td {
-    border-bottom: none;
-  }
+    .matrix tbody tr:last-child th,
+    .matrix tbody tr:last-child td {
+      border-bottom: none;
+    }
 
-  .matrix tbody tr:hover td,
-  .matrix tbody tr:hover th {
-    background: rgba(99, 102, 241, 0.05);
-  }
+    .matrix tbody tr:hover td,
+    .matrix tbody tr:hover th {
+      background: rgba(99, 102, 241, 0.05);
+    }
 
-  /* Stack grid */
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 40px;
-  }
+    /* Stack grid */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
 
-  .stack-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 32px 28px;
-    transition: all 0.3s;
-    position: relative;
-  }
+    .stack-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: all 0.3s;
+      position: relative;
+    }
 
-  .stack-item:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
-  }
+    .stack-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+    }
 
-  .stack-item .layer-num {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--accent-light);
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
+    .stack-item .layer-num {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--accent-light);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-  .stack-item h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: var(--text);
-    letter-spacing: -0.3px;
-  }
+    .stack-item h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
 
-  .stack-item p {
-    font-size: 15px;
-    color: var(--text-muted);
-    margin-bottom: 18px;
-    line-height: 1.65;
-  }
+    .stack-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.65;
+    }
 
-  .stack-item .opportunity {
-    font-size: 11px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    border-top: 1px dashed var(--border);
-    padding-top: 14px;
-    margin-top: 18px;
-    font-weight: 600;
-  }
+    .stack-item .opportunity {
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      border-top: 1px dashed var(--border);
+      padding-top: 14px;
+      margin-top: 18px;
+      font-weight: 600;
+    }
 
-  /* Closing */
-  .article-closing {
-    padding: 120px 0 80px;
-    text-align: center;
-    background: var(--bg);
-  }
+    /* Closing */
+    .article-closing {
+      padding: 120px 0 80px;
+      text-align: center;
+      background: var(--bg);
+    }
 
-  .signature {
-    font-size: clamp(26px, 3.4vw, 40px);
-    line-height: 1.35;
-    color: var(--text);
-    max-width: 880px;
-    margin: 0 auto 48px;
-    letter-spacing: -0.5px;
-    font-style: italic;
-    font-weight: 400;
-  }
+    .signature {
+      font-size: clamp(26px, 3.4vw, 40px);
+      line-height: 1.35;
+      color: var(--text);
+      max-width: 880px;
+      margin: 0 auto 48px;
+      letter-spacing: -0.5px;
+      font-style: italic;
+      font-weight: 400;
+    }
 
-  .signature em {
-    color: var(--accent-light);
-    font-weight: 500;
-  }
+    .signature em {
+      color: var(--accent-light);
+      font-weight: 500;
+    }
 
-  .article-closing .author {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-top: 56px;
-    padding-top: 22px;
-    border-top: 1px solid var(--border);
-    font-weight: 600;
-  }
+    .article-closing .author {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-weight: 600;
+    }
 
-  .closing-cta {
-    margin-top: 40px;
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 15px;
-    transition: all 0.2s;
-  }
+    .closing-cta {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s;
+    }
 
-  .closing-cta:hover {
-    background: var(--accent-light);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px var(--accent-glow);
-  }
+    .closing-cta:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
 
-  @media (max-width: 880px) {
-    .two-col { grid-template-columns: 1fr; gap: 24px; }
-    .two-col aside { position: static; }
-    .stack-grid { grid-template-columns: 1fr; }
-    .pullquote { padding: 28px 24px; }
-    .article-section { padding: 60px 0; }
-    .article-hero { padding: 56px 0 64px; }
-    .hero-meta { gap: 24px; }
-  }
-</style>
+    @media (max-width: 880px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .two-col aside {
+        position: static;
+      }
+
+      .stack-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pullquote {
+        padding: 28px 24px;
+      }
+
+      .article-section {
+        padding: 60px 0;
+      }
+
+      .article-hero {
+        padding: 56px 0 64px;
+      }
+
+      .hero-meta {
+        gap: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body class="article-page">
 
-<div class="container">
-  <header class="article-masthead">
-    <span class="brand-mark">Samir Deolikar</span>
-    <span class="vol">Vol. 01 · Leadership in the AI Era</span>
+  <div class="container">
+    <header class="article-masthead">
+      <span class="brand-mark">Samir Deolikar</span>
+      <span class="vol">Vol. 01 · Leadership in the AI Era</span>
+    </header>
+  </div>
+
+  <!-- HERO -->
+  <header class="article-hero">
+    <div class="container">
+      <a href="cago.html" class="back-link">← Back to Chief AI Growth Officer</a>
+      <div class="eyebrow">An essay on relevance, growth, and the work ahead</div>
+      <h1>The Relevance<br /><em>Imperative.</em></h1>
+      <p class="article-deck">Why IT Services companies must reimagine how they grow, and the kind of leadership the
+        next decade will quietly demand.</p>
+      <div class="hero-meta">
+        <div>Subject<strong>IT Services · AI · Growth</strong></div>
+        <div>Audience<strong>Boards · CEOs · Operators</strong></div>
+        <div>Format<strong>Point of View</strong></div>
+      </div>
+    </div>
   </header>
-</div>
 
-<!-- HERO -->
-<header class="article-hero">
-  <div class="container">
-    <a href="cago.html" class="back-link">← Back to Chief AI Growth Officer</a>
-    <div class="eyebrow">An essay on relevance, growth, and the work ahead</div>
-    <h1>The Relevance<br/><em>Imperative.</em></h1>
-    <p class="article-deck">Why IT Services companies must reimagine how they grow — and the kind of leadership the next decade will quietly demand.</p>
-    <div class="hero-meta">
-      <div>Subject<strong>IT Services · AI · Growth</strong></div>
-      <div>Audience<strong>Boards · CEOs · Operators</strong></div>
-      <div>Format<strong>Point of View</strong></div>
-    </div>
-  </div>
-</header>
-
-<!-- SECTION 1: THE PREMISE -->
-<section class="article-section alt">
-  <div class="container">
-    <div class="section-num">§ 01</div>
-    <div class="section-label">The Premise</div>
-    <div class="two-col">
-      <aside>
-        A thesis<br/>
-        for the next<br/>
-        chapter of<br/>
-        services-led<br/>
-        growth.
-      </aside>
-      <div>
-        <p class="lead">For three decades, IT Services thrived on a quiet promise: that we could build, run, and transform technology better than our clients could on their own. That promise is being renegotiated in real time.</p>
-        <p class="with-dropcap">The shift underway is not a software cycle. It is a redefinition of what value looks like inside an enterprise. Code is being written by machines. Tickets are being resolved by agents. Decisions that once required teams now require prompts. The old units of our industry — billable hours, headcount pyramids, FTE conversions — are losing their explanatory power.</p>
-        <p>And yet, the opportunity has never been larger. Enterprises are not short of ambition; they are short of integration. They have models without data, data without workflows, workflows without adoption, and adoption without measurable outcomes. The gap between AI possibility and enterprise reality is where the next chapter of services-led growth will be written.</p>
-        <p>This document is my point of view on how to win that chapter — written with respect for those already doing this work, and with the humility that comes from knowing none of us have all the answers yet.</p>
+  <!-- SECTION 1: THE PREMISE -->
+  <section class="article-section alt">
+    <div class="container">
+      <div class="section-num">§ 01</div>
+      <div class="section-label">The Premise</div>
+      <div class="two-col">
+        <aside>
+          A thesis<br />
+          for the next<br />
+          chapter of<br />
+          services-led<br />
+          growth.
+        </aside>
+        <div>
+          <p class="lead">For three decades, IT Services thrived on a quiet promise: that we could build, run, and
+            transform technology better than our clients could on their own. That promise is being renegotiated in real
+            time.</p>
+          <p class="with-dropcap">The shift underway is not a software cycle. It is a redefinition of what value looks
+            like inside an enterprise. Code is being written by machines. Tickets are being resolved by agents.
+            Decisions that once required teams now require prompts. The old units of our industry, billable hours,
+            headcount pyramids, FTE conversions, are losing their explanatory power.</p>
+          <p>And yet, the opportunity has never been larger. Enterprises are not short of ambition; they are short of
+            integration. They have models without data, data without workflows, workflows without adoption, and adoption
+            without measurable outcomes. The gap between AI possibility and enterprise reality is where the next chapter
+            of services-led growth will be written.</p>
+          <p>This document is my point of view on how to win that chapter, written with respect for those already doing
+            this work, and with the humility that comes from knowing none of us have all the answers yet.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SECTION 2: THE DIAGNOSIS -->
-<section class="article-section">
-  <div class="container">
-    <div class="section-num">§ 02</div>
-    <div class="section-label">The Diagnosis</div>
-    <h2>Growth is harder<br/>not because demand is lower —<br/>but because <em>relevance</em> is rarer.</h2>
+  <!-- SECTION 2: THE DIAGNOSIS -->
+  <section class="article-section">
+    <div class="container">
+      <div class="section-num">§ 02</div>
+      <div class="section-label">The Diagnosis</div>
+      <h2>Growth is harder<br />not because demand is lower,<br />but because <em>relevance</em> is rarer.</h2>
 
-    <p class="lead">Most IT Services firms are not facing a demand problem. They are facing a relevance problem. The conversations clients want to have have moved up the stack, and not every provider has moved with them.</p>
+      <p class="lead">Most IT Services firms are not facing a demand problem. They are facing a relevance problem. The
+        conversations clients want to have have moved up the stack, and not every provider has moved with them.</p>
 
-    <p>Procurement still asks for rate cards. But boards are asking different questions: How do we use AI to lower cost-to-serve by twenty points? How do we redesign our supply chain when forecasting becomes autonomous? How do we keep our best engineers when copilots do half their work? These are not RFP questions. They are leadership questions, and they require a different kind of partner.</p>
+      <p>Procurement still asks for rate cards. But boards are asking different questions: How do we use AI to lower
+        cost-to-serve by twenty points? How do we redesign our supply chain when forecasting becomes autonomous? How do
+        we keep our best engineers when copilots do half their work? These are not RFP questions. They are leadership
+        questions, and they require a different kind of partner.</p>
 
-    <p>The firms that will continue to grow are not the ones with the largest delivery footprints. They are the ones who can sit on the same side of the table as a CEO and translate ambiguity into a sequenced plan — and then deliver it without theatre.</p>
+      <p>The firms that will continue to grow are not the ones with the largest delivery footprints. They are the ones
+        who can sit on the same side of the table as a CEO and translate ambiguity into a sequenced plan and then
+        deliver it without theatre.</p>
 
-    <div class="pullquote">
-      <q>Enterprise AI is not failing because of a lack of tools. It is failing because of a lack of integration — across customer, capability, and industry.</q>
-      <cite>— A working hypothesis</cite>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: THE MATRIX -->
-<section class="article-section alt">
-  <div class="container">
-    <div class="section-num">§ 03</div>
-    <div class="section-label">A Shared Language</div>
-    <h2>Three pillars,<br/>four levels of maturity,<br/>one <em>matrix</em>.</h2>
-    <p class="lead">Every enterprise AI conversation, in my experience, eventually collapses into the same question: where are we, and where do we want to go? The matrix below is the simplest way I have found to answer it without jargon.</p>
-
-    <div class="matrix-wrapper">
-      <table class="matrix">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Productivity AI<span class="col-sub">Internal efficiency</span></th>
-            <th>Commercial AI<span class="col-sub">Revenue impact</span></th>
-            <th>Industry AI<span class="col-sub">Vertical transformation</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th><span class="level">Level 01</span>Assist</th>
-            <td>Developer copilots</td>
-            <td>Sales assistance</td>
-            <td>Basic analytics</td>
-          </tr>
-          <tr>
-            <th><span class="level">Level 02</span>Human-in-the-loop</th>
-            <td>Test automation</td>
-            <td>Personalization engines</td>
-            <td>Demand forecasting</td>
-          </tr>
-          <tr>
-            <th><span class="level">Level 03</span>Human-as-supervisor</th>
-            <td>AI-led workflows</td>
-            <td>Dynamic pricing</td>
-            <td>Supply chain intelligence</td>
-          </tr>
-          <tr>
-            <th><span class="level">Level 04</span>Autonomous</th>
-            <td>Self-healing systems</td>
-            <td>Autonomous customer experience</td>
-            <td>Autonomous operations</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p style="margin-top: 28px;">The matrix is not a strategy. It is a shared language. Used well, it lets a CIO, a business head, and a delivery leader stand in front of the same chart and agree on what they are doing, what they are not doing yet, and why. Most enterprise AI roadmaps die in translation. This is the vocabulary that helps them survive.</p>
-  </div>
-</section>
-
-<!-- SECTION 4: THE STACK -->
-<section class="article-section">
-  <div class="container">
-    <div class="section-num">§ 04</div>
-    <div class="section-label">The Execution Backbone</div>
-    <h2>AI growth is not<br/>model-driven.<br/>It is <em>stack-driven</em>.</h2>
-    <p class="lead">The strategy lives on a slide. The work lives in four layers. Any IT Services firm that wants to lead in AI must be credible across all four — not in marketing, in muscle.</p>
-
-    <div class="stack-grid">
-      <div class="stack-item">
-        <div class="layer-num">Layer 01</div>
-        <h3>Infrastructure &amp; Network</h3>
-        <p>Cloud, compute, GPU orchestration, security, DevSecOps. AI is compute-heavy and latency-sensitive. The firms that quietly master infrastructure economics will outlast the ones that talk loudest about models.</p>
-        <div class="opportunity">→ GPU orchestration · Secure AI environments</div>
-      </div>
-      <div class="stack-item">
-        <div class="layer-num">Layer 02</div>
-        <h3>Data</h3>
-        <p>Pipelines, quality, governance, feature engineering. AI should not boil the ocean. Data must be curated. Domain-specific, well-governed datasets are the most underrated competitive advantage in the market today.</p>
-        <div class="opportunity">→ Data curation · Readiness frameworks</div>
-      </div>
-      <div class="stack-item">
-        <div class="layer-num">Layer 03</div>
-        <h3>Integration</h3>
-        <p>APIs, ERPs, CRMs, middleware, workflow orchestration. AI that does not touch SAP, Salesforce, or the line-of-business system creates demos, not outcomes. Integration is where value compounds.</p>
-        <div class="opportunity">→ AI + ERP integration · Cross-platform intelligence</div>
-      </div>
-      <div class="stack-item">
-        <div class="layer-num">Layer 04</div>
-        <h3>Experience</h3>
-        <p>Copilots, conversational interfaces, dashboards, agent surfaces. Adoption is the silent killer of AI programs. If users do not use it, value does not exist. Experience is not a wrapper — it is the point.</p>
-        <div class="opportunity">→ Copilots · Conversational UX · Decision dashboards</div>
+      <div class="pullquote">
+        <q>Enterprise AI is not failing because of a lack of tools. It is failing because of a lack of integration
+          across customer, capability, and industry.</q>
+        <cite>A working hypothesis</cite>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SECTION 5: HONEST PARAGRAPH -->
-<section class="article-section dark">
-  <div class="container">
-    <div class="section-num">§ 05</div>
-    <div class="section-label">An Honest Paragraph</div>
-    <h2>The role most<br/>services firms need<br/>is one that should,<br/>eventually, <em>disappear</em>.</h2>
+  <!-- SECTION 3: THE MATRIX -->
+  <section class="article-section alt">
+    <div class="container">
+      <div class="section-num">§ 03</div>
+      <div class="section-label">A Shared Language</div>
+      <h2>Three pillars,<br />four levels of maturity,<br />one <em>matrix</em>.</h2>
+      <p class="lead">Every enterprise AI conversation, in my experience, eventually collapses into the same question:
+        where are we, and where do we want to go? The matrix below is the simplest way I have found to answer it without
+        jargon.</p>
 
-    <p class="lead">I believe the next two to three years will require a temporary integrator role inside many IT Services firms — someone whose only job is to align customer demand, internal capability, and industry context around AI-led growth.</p>
+      <div class="matrix-wrapper">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Productivity AI<span class="col-sub">Internal efficiency</span></th>
+              <th>Commercial AI<span class="col-sub">Revenue impact</span></th>
+              <th>Industry AI<span class="col-sub">Vertical transformation</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><span class="level">Level 01</span>Assist</th>
+              <td>Developer copilots</td>
+              <td>Sales assistance</td>
+              <td>Basic analytics</td>
+            </tr>
+            <tr>
+              <th><span class="level">Level 02</span>Human-in-the-loop</th>
+              <td>Test automation</td>
+              <td>Personalization engines</td>
+              <td>Demand forecasting</td>
+            </tr>
+            <tr>
+              <th><span class="level">Level 03</span>Human-as-supervisor</th>
+              <td>AI-led workflows</td>
+              <td>Dynamic pricing</td>
+              <td>Supply chain intelligence</td>
+            </tr>
+            <tr>
+              <th><span class="level">Level 04</span>Autonomous</th>
+              <td>Self-healing systems</td>
+              <td>Autonomous customer experience</td>
+              <td>Autonomous operations</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <p>Call it Chief AI Growth Officer. Call it something else. The label matters less than the function. Today, growth in AI sits at an awkward intersection: the COO owns delivery, the CCO owns customer, vertical heads own industry — and no one owns the connective tissue. That gap is where revenue leaks, pilots stall, and good strategies fail to compound.</p>
-
-    <p>What this role does is unglamorous and essential. It standardizes the language (the matrix). It hardens the execution (the stack). It builds a small number of repeatable plays, then patiently scales them across accounts. It refuses the temptation to chase every AI headline and instead concentrates effort where the firm has a right to win.</p>
-
-    <div class="pullquote">
-      <q>This role exists because AI is moving faster than organizations can re-shape themselves around it. Once vertical heads become AI-native, the role can — and should — dissolve back into the line.</q>
-      <cite>— On the temporary nature of integrator roles</cite>
+      <p style="margin-top: 28px;">The matrix is not a strategy. It is a shared language. Used well, it lets a CIO, a
+        business head, and a delivery leader stand in front of the same chart and agree on what they are doing, what
+        they are not doing yet, and why. Most enterprise AI roadmaps die in translation. This is the vocabulary that
+        helps them survive.</p>
     </div>
+  </section>
 
-    <p>I find this honesty important. The most useful enterprise leaders I have known are the ones who design themselves out of a job. They build the muscle, transfer it, and move on. The firms that grow durably in this decade will be the ones that hire for that disposition — not for empire.</p>
-  </div>
-</section>
+  <!-- SECTION 4: THE STACK -->
+  <section class="article-section">
+    <div class="container">
+      <div class="section-num">§ 04</div>
+      <div class="section-label">The Execution Backbone</div>
+      <h2>AI growth is not<br />model-driven.<br />It is <em>stack-driven</em>.</h2>
+      <p class="lead">The strategy lives on a slide. The work lives in four layers. Any IT Services firm that wants to
+        lead in AI must be credible across all four, not in marketing, in muscle.</p>
 
-<!-- SECTION 6: LEADERSHIP -->
-<section class="article-section">
-  <div class="container">
-    <div class="section-num">§ 06</div>
-    <div class="section-label">The Leadership Required</div>
-    <h2>Transformation rewards<br/>a quieter kind of <em>leader</em>.</h2>
-    <p class="lead">When the playbook is being rewritten, certainty becomes a liability. The leaders I have learned the most from share a few unfashionable traits.</p>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <div class="layer-num">Layer 01</div>
+          <h3>Infrastructure &amp; Network</h3>
+          <p>Cloud, compute, GPU orchestration, security, DevSecOps. AI is compute-heavy and latency-sensitive. The
+            firms that quietly master infrastructure economics will outlast the ones that talk loudest about models.</p>
+          <div class="opportunity">→ GPU orchestration · Secure AI environments</div>
+        </div>
+        <div class="stack-item">
+          <div class="layer-num">Layer 02</div>
+          <h3>Data</h3>
+          <p>Pipelines, quality, governance, feature engineering. AI should not boil the ocean. Data must be curated.
+            Domain-specific, well-governed datasets are the most underrated competitive advantage in the market today.
+          </p>
+          <div class="opportunity">→ Data curation · Readiness frameworks</div>
+        </div>
+        <div class="stack-item">
+          <div class="layer-num">Layer 03</div>
+          <h3>Integration</h3>
+          <p>APIs, ERPs, CRMs, middleware, workflow orchestration. AI that does not touch SAP, Salesforce, or the
+            line-of-business system creates demos, not outcomes. Integration is where value compounds.</p>
+          <div class="opportunity">→ AI + ERP integration · Cross-platform intelligence</div>
+        </div>
+        <div class="stack-item">
+          <div class="layer-num">Layer 04</div>
+          <h3>Experience</h3>
+          <p>Copilots, conversational interfaces, dashboards, agent surfaces. Adoption is the silent killer of AI
+            programs. If users do not use it, value does not exist. Experience is not a wrapper; it is the point.</p>
+          <div class="opportunity">→ Copilots · Conversational UX · Decision dashboards</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p>They listen for longer than feels comfortable. They are willing to look naive in front of younger engineers. They prefer to be useful over being right. They treat customers as collaborators, not accounts. They ship small, learn fast, and resist the urge to declare victory before the value has actually landed.</p>
+  <!-- SECTION 5: HONEST PARAGRAPH -->
+  <section class="article-section dark">
+    <div class="container">
+      <div class="section-num">§ 05</div>
+      <div class="section-label">An Honest Paragraph</div>
+      <h2>The role most<br />services firms need<br />is one that should,<br />eventually, <em>disappear</em>.</h2>
 
-    <p>This is the leadership the next decade of IT Services will quietly reward — not because it is heroic, but because it is honest about what we do and do not yet know. AI will rewrite a great deal of how our industry works. It will not rewrite the basics: trust, craft, and the willingness to do the hard, integrating work that nobody else wants to own.</p>
+      <p class="lead">I believe the next two to three years will require a temporary integrator role inside many IT
+        Services firms, someone whose only job is to align customer demand, internal capability, and industry context
+        around AI-led growth.</p>
 
-    <p>If there is a single conviction behind this point of view, it is this. Growth, in the years ahead, will follow relevance. Relevance will follow integration. And integration is, in the end, a leadership problem before it is a technology one.</p>
-  </div>
-</section>
+      <p>Call it Chief AI Growth Officer. Call it something else. The label matters less than the function. Today,
+        growth in AI sits at an awkward intersection: the COO owns delivery, the CCO owns customer, vertical heads own
+        industry, and no one owns the connective tissue. That gap is where revenue leaks, pilots stall, and good
+        strategies fail to compound.</p>
 
-<!-- CLOSING -->
-<section class="article-closing">
-  <div class="container">
-    <p class="signature">
-      The work ahead is not to predict the future of AI.<br/>
-      It is to make our companies <em>worthy</em> of it.
-    </p>
-    <a href="cago.html" class="closing-cta">Read the CAGO blueprint →</a>
-    <div class="author">A Point of View · Shared in the spirit of conversation</div>
-  </div>
-</section>
+      <p>What this role does is unglamorous and essential. It standardizes the language (the matrix). It hardens the
+        execution (the stack). It builds a small number of repeatable plays, then patiently scales them across accounts.
+        It refuses the temptation to chase every AI headline and instead concentrates effort where the firm has a right
+        to win.</p>
 
-<footer>
-  <div class="container">
-    <p class="contact-email">samir.deolikar@gmail.com</p>
-    <p class="copyright">© 2026 Samir Deolikar · For discussion, not for distribution</p>
-  </div>
-</footer>
+      <div class="pullquote">
+        <q>This role exists because AI is moving faster than organizations can re-shape themselves around it. Once
+          vertical heads become AI-native, the role can and should dissolve back into the line.</q>
+        <cite>On the temporary nature of integrator roles</cite>
+      </div>
+
+      <p>I find this honesty important. The most useful enterprise leaders I have known are the ones who design
+        themselves out of a job. They build the muscle, transfer it, and move on. The firms that grow durably in this
+        decade will be the ones that hire for that disposition, not for empire.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6: LEADERSHIP -->
+  <section class="article-section">
+    <div class="container">
+      <div class="section-num">§ 06</div>
+      <div class="section-label">The Leadership Required</div>
+      <h2>Transformation rewards<br />a quieter kind of <em>leader</em>.</h2>
+      <p class="lead">When the playbook is being rewritten, certainty becomes a liability. The leaders I have learned
+        the most from share a few unfashionable traits.</p>
+
+      <p>They listen for longer than feels comfortable. They are willing to look naive in front of younger engineers.
+        They prefer to be useful over being right. They treat customers as collaborators, not accounts. They ship small,
+        learn fast, and resist the urge to declare victory before the value has actually landed.</p>
+
+      <p>This is the leadership the next decade of IT Services will quietly reward — not because it is heroic, but
+        because it is honest about what we do and do not yet know. AI will rewrite a great deal of how our industry
+        works. It will not rewrite the basics: trust, craft, and the willingness to do the hard, integrating work that
+        nobody else wants to own.</p>
+
+      <p>If there is a single conviction behind this point of view, it is this. Growth, in the years ahead, will follow
+        relevance. Relevance will follow integration. And integration is, in the end, a leadership problem before it is
+        a technology one.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="article-closing">
+    <div class="container">
+      <p class="signature">
+        The work ahead is not to predict the future of AI.<br />
+        It is to make our companies <em>worthy</em> of it.
+      </p>
+      <a href="cago.html" class="closing-cta">Read the CAGO blueprint →</a>
+      <div class="author">A Point of View · Shared in the spirit of conversation</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="contact-email">samir.deolikar@gmail.com</p>
+      <p class="copyright">© 2026 Samir Deolikar · For discussion, not for distribution</p>
+    </div>
+  </footer>
 
 </body>
+
 </html>
